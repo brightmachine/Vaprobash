@@ -24,3 +24,18 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again p
 
 # Install MySQL Server
 sudo apt-get install -y $mysql_package
+
+cat > /etc/mysql/conf.d/charsets.cnf << EOF
+[client]
+default-character-set=utf8
+
+[mysql]
+default-character-set=utf8
+
+
+[mysqld]
+collation-server = utf8_unicode_ci
+init-connect='SET NAMES utf8'
+character-set-server = utf8
+
+EOF
