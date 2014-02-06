@@ -80,6 +80,9 @@ Vagrant.configure("2") do |config|
   # Provision Apache Base
   # config.vm.provision "shell", path: "https://raw.github.com/#{github_username}/#{github_repo}/#{github_branch}/scripts/apache.sh", args: server_ip
 
+  # Apache configuration to pull vhosts configurations from /vagrant/vhosts
+  # config.vm.provision "shell", path: "https://raw.github.com/#{github_username}/#{github_repo}/#{github_branch}/scripts/apache_vagrant_vhosts.sh"
+
   # Provision HHVM
   # config.vm.provision "shell", path: "https://raw.github.com/#{github_username}/#{github_repo}/#{github_branch}/scripts/hhvm.sh"
 
