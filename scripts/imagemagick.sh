@@ -3,4 +3,4 @@
 echo ">>> Installing ImageMagick"
 
 # Screen
-sudo apt-get install imagemagick
+sudo apt-get install -y imagemagick
