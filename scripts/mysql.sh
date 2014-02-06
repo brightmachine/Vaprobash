@@ -39,3 +39,5 @@ init-connect='SET NAMES utf8'
 character-set-server = utf8
 
 EOF
+
+sudo service mysql restart
