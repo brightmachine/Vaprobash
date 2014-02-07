@@ -31,7 +31,7 @@ xdebug.show_local_vars=1
 EOF
 
 # PHP Error Reporting Config
-sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/fpm/php.ini
+sed -i "s/error_reporting = .*/error_reporting = E_ALL & ~E_NOTICE/" /etc/php5/fpm/php.ini
 sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/fpm/php.ini
 
 # Make sure php5-fpm is running as a Unix socket on "distributed" version
