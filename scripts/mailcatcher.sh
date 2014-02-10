@@ -47,3 +47,16 @@ if [[ -f "/home/vagrant/.bashrc" ]]; then
 	sudo echo "alias mailcatcher=\"mailcatcher --ip=0.0.0.0\"" >> /home/vagrant/.bashrc
 	. /home/vagrant/.bashrc
 fi
+
+# start mailcatcher on boot
+cat > /etc/init/mailcatcher.conf << EOF
+# restart apache after vagrant mounted
+description "start mailcatcher after vagrant mounted"
+author "Kelvin Jones"
+
+# Listen and start after the vagrant-mounted event
+start on vagrant-mounted
+
+exec /usr/bin/env mailcatcher
+
+EOF
