@@ -57,6 +57,6 @@ author "Kelvin Jones"
 # Listen and start after the vagrant-mounted event
 start on vagrant-mounted
 
-exec /usr/bin/env mailcatcher
+exec /usr/bin/env mailcatcher --ip=0.0.0.0
 
 EOF
