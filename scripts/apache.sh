@@ -32,7 +32,7 @@ cat > /etc/apache2/conf-available/php5-fpm.conf << EOF
         AddHandler php5-fcgi .php
         Action php5-fcgi /php5-fcgi
         Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
-        FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /var/run/php5-fpm.sock -pass-header Authorization
+        FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /var/run/php5-fpm.sock -pass-header Authorization -idle-timeout 300
         <Directory /usr/lib/cgi-bin>
                 Options ExecCGI FollowSymLinks
                 SetHandler fastcgi-script
