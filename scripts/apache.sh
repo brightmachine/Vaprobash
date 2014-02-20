@@ -18,6 +18,7 @@ echo ">>> Configuring Apache"
 
 # Apache Config
 sudo a2enmod rewrite actions
+sudo a2enmod expires
 curl https://gist.github.com/fideloper/2710970/raw/vhost.sh > vhost
 sudo chmod guo+x vhost
 sudo mv vhost /usr/local/bin
