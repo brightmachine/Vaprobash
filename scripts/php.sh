@@ -33,8 +33,18 @@ xdebug.show_local_vars=1
 EOF
 
 # PHP Error Reporting Config
-sed -i "s/error_reporting = .*/error_reporting = E_ALL \& ~E_NOTICE/" /etc/php5/fpm/php.ini
-sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/fpm/php.ini
+cat > /etc/php5/cli/conf.d/99-BrightMachine.ini << EOF
+[Bright Machine]
+error_reporting = E_ALL & ~E_NOTICE
+date.timezone = "Europe/London"
+date.default_latitude  = 51.500181
+date.default_longitude = -0.12619
+detect_unicode = Off
+session.gc_maxlifetime = 14400
+display_errors = On
+EOF
+
+cp /etc/php5/cli/conf.d/99-BrightMachine.ini /etc/php5/fpm/conf.d/99-BrightMachine.ini
 
 # Make sure php5-fpm is running as a Unix socket on "distributed" version
 if [ $php_version == "distributed" ]; then
