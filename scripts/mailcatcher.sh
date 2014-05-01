@@ -38,9 +38,10 @@ sudo service apache2 restart
 
 #add aliases
 if [[ -f "/home/vagrant/.bash_profile" ]]; then
-    sudo sed -i "s/^alias mailcatcher.*$//" /home/vagrant/.bash_profile
-	sudo echo "alias mailcatcher=\"mailcatcher --ip=0.0.0.0\"" >> /home/vagrant/.bash_profile
-	. /home/vagrant/.bash_profile
+    if ! grep -qsc '.mailcatcher' /home/vagrant/.bash_profile; then
+        echo "\nalias mailcatcher=\"mailcatcher --ip=0.0.0.0\"\n" >> /home/vagrant/.bash_profile
+        . /home/vagrant/.bash_profile
+    fi
 fi
 
 if [[ -f "/home/vagrant/.zshrc" ]]; then

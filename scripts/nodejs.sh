@@ -62,11 +62,19 @@ if [[ $NODE_IS_INSTALLED -ne 0 ]]; then
     npm config set prefix /home/vagrant/npm
 
     # Add new NPM Global Packages location to PATH
-    printf "\n# Add new NPM global packages location to PATH\n%s" 'export PATH=$PATH:~/npm/bin' >> /home/vagrant/.bash_profile
+    if ! grep -qsc 'npm\/bin' /home/vagrant/.bash_profile; then
+        printf "\n# Add new NPM global packages location to PATH\n%s\n" 'export PATH=$PATH:~/npm/bin' >> /home/vagrant/.bash_profile
+    fi
 
     # Add new NPM root to NODE_PATH
-    printf "\n# Add the new NPM root to NODE_PATH\n%s" 'export NODE_PATH=$NODE_PATH:~/npm/lib/node_modules' >> /home/vagrant/.bash_profile
+    if ! grep -qsc 'npm\/lib\/node_modules' /home/vagrant/.bash_profile; then
+        printf "\n# Add the new NPM root to NODE_PATH\n%s\n" 'export NODE_PATH=$NODE_PATH:~/npm/lib/node_modules' >> /home/vagrant/.bash_profile
+    fi
 
+    # ensure we've got .profile loaded
+    if ! grep -qsc '.profile' /home/vagrant/.bash_profile; then
+        printf "\n# Ensure we load .profile\n%s\n" 'source ~/.profile' >> /home/vagrant/.bash_profile
+    fi
 fi
 
 # Install (optional) Global Node Packages
