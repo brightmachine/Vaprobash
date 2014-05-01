@@ -61,8 +61,8 @@ EOF
 sed -i 's/sendfile on;/sendfile off;/' /etc/nginx/nginx.conf
 
 # Nginx enabling and disabling virtual hosts
-curl https://gist.github.com/fideloper/8261546/raw/ngxen > ngxen
-curl https://gist.github.com/fideloper/8261546/raw/ngxdis > ngxdis
+curl https://gist.githubusercontent.com/fideloper/8261546/raw/ngxen > ngxen
+curl https://gist.githubusercontent.com/fideloper/8261546/raw/ngxdis > ngxdis
 sudo chmod guo+x ngxen ngxdis
 sudo mv ngxen ngxdis /usr/local/bin
 
