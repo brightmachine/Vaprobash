@@ -32,8 +32,8 @@ if [[ $NODE_IS_INSTALLED -ne 0 ]]; then
     curl https://gist.githubusercontent.com/Ilyes512/8335484/raw/nvm_install.sh | sh
 
     # Re-source .bash_profile and .zshrc if they exist
-    if [[ -f "/home/vagrant/.bash_profile" ]]; then
-        . /home/vagrant/.bash_profile
+    if [[ -f "/home/vagrant/.profile" ]]; then
+        . /home/vagrant/.profile
     fi
 
     if [[ -f "/home/vagrant/.zshrc" ]]; then
